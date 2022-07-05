@@ -6,7 +6,14 @@ let subtractQuantityButton = document.getElementById("quantity-down")
 
 addQuantityButton.addEventListener("click", function(){
     console.log('Adding')
-    totalQuantity++ 
+    totalQuantity++
+
+    totalQuantityText.textContent = 'Quantity: '+ totalQuantity
+})
+
+subtractQuantityButton.addEventListener("click", function(){
+    console.log('Subtracting')
+    totalQuantity--
     if (totalQuantity < 0){
         totalQuantity = 0
     }
@@ -14,3 +21,4 @@ addQuantityButton.addEventListener("click", function(){
         totalQuantityText.textContent = 'Quantity: '+ totalQuantity
     }
 })
+
