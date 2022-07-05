@@ -1,8 +1,9 @@
 let totalQuantity = 1
 let totalQuantityText = document.querySelector('.total-quantity')
 
-let addQuantityButton = document.getElementById("quantity-up")
-let subtractQuantityButton = document.getElementById("quantity-down")
+let addQuantityButton = document.getElementById('quantity-up')
+let subtractQuantityButton = document.getElementById('quantity-down')
+let removeButton = document.querySelector('.remove')
 
 addQuantityButton.addEventListener("click", function(){
     console.log('Adding')
@@ -22,3 +23,8 @@ subtractQuantityButton.addEventListener("click", function(){
     }
 })
 
+removeButton.addEventListener("click", function(){
+    let item = removeButton.parentElement
+    item.remove()
+    console.log(item)
+})
