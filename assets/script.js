@@ -1,30 +1,33 @@
-let totalQuantity = 1
-let totalQuantityText = document.querySelector('.total-quantity')
+let cartItems = document.querySelectorAll('.cart-item')
 
-let addQuantityButton = document.getElementById('quantity-up')
-let subtractQuantityButton = document.getElementById('quantity-down')
-let removeButton = document.querySelector('.remove')
+for (let i = 0; i < cartItems.length; i++) {
+    let cartItem = cartItems[i]
+    cartItem.index = i
+    cartItem.totalQuantity = 1
+    cartItem.totalQuantityText = cartItem.querySelector('.total-quantity')
+    cartItem.addQuantityButton = cartItem.querySelector('#quantity-up')
+    cartItem.subtractQuantityButton = cartItem.querySelector('#quantity-down')
+    cartItem.removeButton = cartItem.querySelector('.remove')
 
-addQuantityButton.addEventListener("click", function(){
-    console.log('Adding')
-    totalQuantity++
+    cartItem.addQuantityButton.addEventListener("click", function(){
+        console.log('Adding')
+        cartItem.totalQuantity++
+        cartItem.totalQuantityText.textContent = 'Quantity: '+ cartItem.totalQuantity
+    })
 
-    totalQuantityText.textContent = 'Quantity: '+ totalQuantity
-})
+    cartItem.subtractQuantityButton.addEventListener("click", function(){
+        console.log('Subtracting')
+        cartItem.totalQuantity--
+        if (cartItem.totalQuantity < 0) {
+            cartItem.totalQuantity = 0
+        }
+        else {
+            cartItem.totalQuantityText.textContent = 'Quantity: '+ cartItem.totalQuantity
+        }
+    })
 
-subtractQuantityButton.addEventListener("click", function(){
-    console.log('Subtracting')
-    totalQuantity--
-    if (totalQuantity < 0){
-        totalQuantity = 0
-    }
-    else {
-        totalQuantityText.textContent = 'Quantity: '+ totalQuantity
-    }
-})
-
-removeButton.addEventListener("click", function(){
-    let item = removeButton.parentElement
-    item.remove()
-    console.log(item)
-})
+    cartItem.removeButton.addEventListener("click", function(){
+        let itemToRemove = cartItem.removeButton.parentElement
+        itemToRemove.remove()
+    })
+}
